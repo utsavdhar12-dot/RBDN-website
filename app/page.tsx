@@ -37,6 +37,7 @@ export default function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [upcomingRides, setUpcomingRides] = useState<Ride[]>([]);
   const [ridesLoading, setRidesLoading] = useState(true);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const loadPageData = async () => {
@@ -142,79 +143,81 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-black via-[#0f0f0f] to-[#1a1a1a] text-white">
-      {/* Navbar */}
-      <nav className="sticky top-0 z-50 border-b border-white/10 bg-black/50 backdrop-blur-md">
-        <div className="mx-auto flex max-w-[1800px] items-center justify-between px-8 py-4">
-          <div className="flex items-center gap-4">
-            <img
-              src="https://res.cloudinary.com/ddx2xuahn/image/upload/q_auto/f_auto/v1776750605/WhatsApp_Image_2026-04-21_at_11.13.41_xahv2g.jpg"
-              alt="RBDN Logo"
-              className="h-14 w-14 rounded-full border border-orange-500/40 object-cover shadow-lg"
-            />
-            <div>
-              <h1 className="text-lg font-bold tracking-[0.2em] text-orange-500 md:text-xl">
-                RIDERS BROTHERHOOD DELHI NCR
-              </h1>
-              <p className="text-xs text-white/60">
-                Where passion meets discipline on every ride.
-              </p>
-            </div>
-          </div>
+            {/* Navbar */}
+<nav className="sticky top-0 z-50 border-b border-white/10 bg-black/50 backdrop-blur-md">
+  <div className="mx-auto flex max-w-[1800px] items-center justify-between px-8 py-4">
+    <div className="flex items-center gap-4">
+      <img
+        src="https://res.cloudinary.com/ddx2xuahn/image/upload/q_auto/f_auto/v1776750605/WhatsApp_Image_2026-04-21_at_11.13.41_xahv2g.jpg"
+        alt="RBDN Logo"
+        className="h-14 w-14 rounded-full border border-orange-500/40 object-cover shadow-lg"
+      />
+      <div>
+        <h1 className="text-lg font-bold tracking-[0.2em] text-orange-500 md:text-xl">
+          RIDERS BROTHERHOOD DELHI NCR
+        </h1>
+        <p className="text-xs text-white/60">
+          Where passion meets discipline on every ride.
+        </p>
+      </div>
+    </div>
 
-          <div className="flex items-center gap-4">
-            <a
-              href="#rides"
-              className="hidden text-sm text-white/80 transition hover:text-orange-400 md:inline"
-            >
-              Rides
-            </a>
-            <a
-              href="#about"
-              className="hidden text-sm text-white/80 transition hover:text-orange-400 md:inline"
-            >
-              About
-            </a>
-            <a
-              href="#join"
-              className="hidden text-sm text-white/80 transition hover:text-orange-400 md:inline"
-            >
-              Join Us
-            </a>
-            <Link
-              href="/gallery"
-              className="hidden text-sm text-white/80 transition hover:text-orange-400 md:inline"
-            >
-              Gallery
-            </Link>
+    <div className="flex items-center gap-4">
+      <a
+        href="#rides"
+        className="hidden text-sm text-white/80 transition hover:text-orange-400 md:inline"
+      >
+        Rides
+      </a>
+      <a
+        href="#about"
+        className="hidden text-sm text-white/80 transition hover:text-orange-400 md:inline"
+      >
+        About
+      </a>
+      <a
+        href="#join"
+        className="hidden text-sm text-white/80 transition hover:text-orange-400 md:inline"
+      >
+        Join Us
+      </a>
+      <Link
+        href="/gallery"
+        className="hidden text-sm text-white/80 transition hover:text-orange-400 md:inline"
+      >
+        Gallery
+      </Link>
 
-            <Link
-              href="/register"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-white/15 px-5 py-2 text-sm font-semibold text-white transition hover:border-orange-500 hover:text-orange-400"
-            >
-              Register
-            </Link>
+      <Link
+        href="/register"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="rounded-full border border-white/15 px-5 py-2 text-sm font-semibold text-white transition hover:border-orange-500 hover:text-orange-400"
+      >
+        Register
+      </Link>
 
-            <Link
-              href="/login"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-orange-500 px-5 py-2 text-sm font-semibold text-orange-400 transition hover:bg-orange-500 hover:text-black"
-            >
-              Login
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <Link
+        href="/login"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="rounded-full border border-orange-500 px-5 py-2 text-sm font-semibold text-orange-400 transition hover:bg-orange-500 hover:text-black"
+      >
+        Login
+      </Link>
+    </div>
+  </div>
+</nav>
+
+<div className="h-px w-full bg-white/10"></div>
 
       {/* Hero Carousel */}
-      <section className="relative overflow-hidden border-b border-white/10 py-8">
+      <section className="relative overflow-hidden border-b border-white/10 pt-16 pb-8 sm:pt-20 md:pt-24">
         <div className="mx-auto mb-6 max-w-[1800px] px-8">
           <p className="text-sm uppercase tracking-[0.25em] text-orange-400">
             Ride Showcase
           </p>
-          <h2 className="mt-2 text-3xl font-bold md:text-4xl">
+          <h2 className="mt-2 text-2xl font-bold sm:text-3xl md:text-4xl">
             Stories from the brotherhood
           </h2>
           <p className="text-lg italic text-gray-300 mt-2">
@@ -499,7 +502,7 @@ export default function Home() {
                   href={`/rides/${ride.id}`}
                   className="group overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition hover:border-orange-500/50"
                 >
-                  <div className="relative h-40 w-full overflow-hidden">
+                  <div className="relative h-20 w-full overflow-hidden">
                     <img
                       src={ride.posterUrl || "/placeholder.jpg"}
                       alt={ride.rideName || "Ride"}
